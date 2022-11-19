@@ -1,3 +1,3 @@
 plugins {
-    id("net.kyori.indra.publishing.sonatype")
+    id("net.kyori.indra.publishing")
 }

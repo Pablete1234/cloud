@@ -8,6 +8,20 @@ signing {
     useInMemoryPgpKeys(signingKey, signingPassword)
 }
 
+publishing {
+    repositories {
+        maven {
+            name = "pgmRepo"
+
+            val releasesRepoUrl = uri("https://repo.pgm.fyi/releases")
+            val snapshotsRepoUrl = uri("https://repo.pgm.fyi/snapshots")
+            url = if (version.toString().endsWith("SNAPSHOT")) snapshotsRepoUrl else releasesRepoUrl
+
+            credentials(PasswordCredentials::class)
+        }
+    }
+}
+
 indra {
     github("Incendo", "cloud") {
         ci(true)
